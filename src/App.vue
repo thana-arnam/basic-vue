@@ -18,18 +18,16 @@
     <div v-else>
       <p>งานอดิเรก</p>
       <ul>
-        <li>{{hobby[0]}}</li>
-        <li>{{hobby[1]}}</li>
-        <li>{{hobby[2]}}</li>
-        <li>{{hobby[3]}}</li>
+        <li v-for="(item,index) in hobby" v-bind:key="index">{{item}}</li>
       </ul>
     </div>
     <p>ข้อมูลพื้นฐาน</p>
     <ul>
-      <li>เพศ : {{general.gender}}</li>
+      <!-- <li>เพศ : {{general.gender}}</li>
       <li>น้ำหนัก : {{general.weight}} kg</li>
       <li>ส่วนสูง : {{general.height}} cm</li>
-      <li>โรคประจำตัว : {{general.status}}</li>
+      <li>โรคประจำตัว : {{general.status}}</li> -->
+      <li v-for="(item,key) in general" v-bind:key="key">{{key}} : {{item}}</li>
     </ul>
     <!-- <button v-on:click="showData">คลิกเพื่อดูข้อมูล 1</button>
     <button @click="showData">คลิกเพื่อดูข้อมูล 2</button>
