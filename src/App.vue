@@ -9,9 +9,20 @@
       <button type="submit">บันทึก</button>
     </form> -->
 
-    <h1>ชื่อ-นามสกุล : {{ getFullName() }}</h1>
+    <h1>ชื่อ-นามสกุล : {{ getFullName }}</h1>
     <!-- <h2>ชื่อเล่น : {{nickName}}</h2> -->
     <h1>อายุ : {{ age }} ปี</h1>
+    <h1>เงินเดือน : {{ salary }} บาท</h1>
+    <h1>รายได้ต่อปี : {{getIncome}} บาท</h1>
+    <h1>ตำแหน่งงาน : {{getDepartment}}</h1>
+    <button @click="addSalary(5000)">เพิ่มเงินเดือน</button>
+    <!-- <h2>Method 1 : {{getRandomByMethod()}}</h2>
+    <h2>Method 2 : {{getRandomByMethod()}}</h2>
+    <h2>Method 3 : {{getRandomByMethod()}}</h2>
+    <hr/>
+    <h2>Computed 1 : {{getRandomByComputed}}</h2>
+    <h2>Computed 2 : {{getRandomByComputed}}</h2>
+    <h2>Computed 3 : {{getRandomByComputed}}</h2> -->
     <button @click="toggleVisable">{{ isVisable ? "ซ่อน" : "แสดง"}}รายละเอียด</button>
     <article v-show="isVisable">
       <p>ที่อยู่ : <span v-html="address"></span></p>
@@ -65,12 +76,13 @@ export default {
         status: false,
       },
       isVisable: false,
+      salary: 20000
     };
   },
   methods: {
-    getFullName() {
-      return `${this.firstName} ${this.lastName}`;
-    },
+    // getFullName() {
+    //   return `${this.firstName} ${this.lastName}`;
+    // },
     showData() {
       alert(this.firstName);
     },
@@ -88,8 +100,28 @@ export default {
     },
     toggleVisable() {
       this.isVisable = !this.isVisable
+    },
+    getRandomByMethod() {
+      return Math.random();
+    },
+    addSalary(value) {
+      this.salary+=value;
     }
   },
+  computed: {
+    getFullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    getRandomByComputed() {
+      return Math.random();
+    },
+    getIncome() {
+      return this.salary * 12;
+    },
+    getDepartment() {
+      return this.salary >= 35000 ? "Project Manager" : "Programmer";
+    }
+  }
 };
 </script>
 
