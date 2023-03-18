@@ -121,6 +121,14 @@ export default {
     getDepartment() {
       return this.salary >= 35000 ? "Project Manager" : "Programmer";
     }
+  },
+  watch: {
+    salary(value) {
+      if (value > 50000) {
+        alert("เงินเดือนไม่ควรเกิน 50,000บาท")
+        setTimeout(() => this.salary = 20000, 2000);
+      }
+    }
   }
 };
 </script>
